@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criptograf</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+    <div>
+    <h1>Criptograf</h1>
+
+    <label for="input">Introduceți mesajul: </label>
+    <br>
+    <textarea id="input" placeholder="Mesaj..." rows="4" spellcheck="false"></textarea>
+    <br>
+
+    <label for="meniu" id="labelMeniu">Selectați metoda de criptare: </label>
+    <br>
+    <select id="meniu">
+        <option value="cezar">Cezar</option>
+        <option value="substitutie">Substituție</option>
+        <option value="playfair">Playfair</option>
+        <option value="vigenere">Vigenere</option>
+        <option value="transpozitie">Transpoziție pe coloane</option>
+    </select>
+    <br>
+
+    <button id="butonCriptare">Criptare</button>
+    <br>
+    
+    <label for="output">Mesajul criptat: </label>
+    <br>
+    <textarea id="output" placeholder="Mesaj criptat..." rows="4" readonly></textarea>
+
+    </div>
+    
+</body>
+
+
+</html>

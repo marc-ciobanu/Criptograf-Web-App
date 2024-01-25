@@ -1,0 +1,90 @@
+/*
+  112D4E
+  3F72AF
+  DBE2EF
+  F9F7F7
+*/
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Roboto Slab', sans-serif;
+    background-color: #DBE2EF;
+    color: #112D4E;
+}
+
+div {
+    text-align: center;
+}
+
+h1 {
+    margin-top: -20px;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+}
+
+label {
+    font-size: 1.2em;
+}
+
+textarea {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 300;
+    background-color: #F9F7F7;
+    border: 1px solid #967E76;
+    resize: none;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1.2em;
+    padding: 10px;
+    margin-top: 7px;
+    margin-bottom: 25px;
+    width: 600px;
+}
+
+#meniu{
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 300;
+    background-color: #F9F7F7;
+    border: 1px solid #967E76;
+    resize: none;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1.2em;
+    margin-top: 7px;
+}
+
+option{
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 300;
+}
+
+#butonCriptare {
+    font-family: 'Roboto Slab', sans-serif;
+    margin: 30px 0;
+    font-size: 1.3em;
+    background-color: #9bb7d9;
+    color: #f1f3f8;
+    border: 1px solid #77716f;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 400px;
+    transition: background-color 0.3s;
+}
+
+#butonCriptare:hover {
+    background-color: #7097c7;
+    color: #e9ecf2;
+}
+
+textarea:focus,
+#meniu:focus {
+    outline: none;
+    border-color: #3F72AF;
+    border-width: 1.7px;
+}
+
