@@ -1,57 +1,6 @@
-function criptareCezar(mesaj, shift) {
-    const alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    let mesajCriptat = "";
+// scripts.js
 
-    for (let i = 0; i < mesaj.length; i++) {
-        let char = mesaj[i].toUpperCase();
-
-        if (alfabet.includes(char)) {
-            let index = alfabet.indexOf(char);
-            let newIndex = (index + shift) % 26;
-
-            if (newIndex < 0) {
-                newIndex += 26;
-            }
-
-            if (char === mesaj[i]) {
-                mesajCriptat += alfabet[newIndex];
-            } else {
-                mesajCriptat += alfabet[newIndex].toLowerCase();
-            }
-        } else {
-            mesajCriptat += mesaj[i];
-        }
-    }
-
-    return mesajCriptat;
-}
-
-
-function criptareSubstitutie(mesaj, subKey) {
-    const alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    mesajUpperCase = mesaj.toUpperCase();
-    let mesajCriptat = "";
-
-    for(let i = 0; i < mesaj.length; i++){
-        let char = mesajUpperCase[i];
-
-        if(alfabet.includes(char)){
-            let index = alfabet.indexOf(char);
-            let charCriptat = subKey[index];
-
-            if(mesaj[i] === mesajUpperCase[i]){
-                mesajCriptat += charCriptat.toUpperCase();
-            }
-            else{
-                mesajCriptat += charCriptat.toLowerCase();
-            }
-        }
-        else {
-            mesajCriptat += char;
-        }
-    }
-    return mesajCriptat;
-}
+import { criptareCezar, criptareSubstitutie } from './encrypt.js';
 
 document.addEventListener("DOMContentLoaded", function(){
     const butonCriptare = document.getElementById("butonCriptare");
@@ -70,8 +19,6 @@ document.addEventListener("DOMContentLoaded", function(){
             case "substitutie":
                 showSubstitutieModal();
                 break;
-
-            
 
             default:
                 console.error("Metoda invalida.");
@@ -112,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function(){
         switch(metodaCriptare) {
             case "cezar":
                 const shift = document.getElementById("shiftInput").value;
-                
+
                 if(shift !== ""){
                     input = document.getElementById("input").value;
                     output = criptareCezar(input, parseInt(shift,10));
@@ -122,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     return;
                 }
                 break;
-            
+
             case "substitutie":
                 const substitutieInput = document.getElementById("substitutieInput").value;
                 if (substitutieInput.length === 26) {
