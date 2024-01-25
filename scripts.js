@@ -1,6 +1,5 @@
-// scripts.js
-
-import { criptareCezar, criptareSubstitutie } from './encrypt.js';
+import { criptareCezar, criptareSubstitutie, criptareVigenere, criptareTranspozitie } from './encrypt.js';
+import { showCezarModal, showSubstitutieModal, showVigenereModal, showTranspozitieModal } from './modals.js';
 
 document.addEventListener("DOMContentLoaded", function(){
     const butonCriptare = document.getElementById("butonCriptare");
@@ -20,6 +19,14 @@ document.addEventListener("DOMContentLoaded", function(){
                 showSubstitutieModal();
                 break;
 
+            case "vigenere":
+                showVigenereModal();
+                break;
+
+            case "transpozitie":
+                showTranspozitieModal();
+                break;
+
             default:
                 console.error("Metoda invalida.");
                 return;
@@ -35,22 +42,6 @@ document.addEventListener("DOMContentLoaded", function(){
             modal.style.display = "none";
         }
     });
-
-    function showCezarModal() {
-        modalContent.innerHTML = `
-            <label for="shiftInput">Introduceți valoarea de shift:</label> <br>
-            <input type="number" id="shiftInput">
-        `;
-        modal.style.display = "flex";
-    }
-
-    function showSubstitutieModal() {
-        modalContent.innerHTML = `
-            <label for="substitutieInput">Introduceți cifrul cheii de criptare (26 de litere):</label> <br>
-            <input type="text" id="substitutieInput">
-        `;
-        modal.style.display = "flex";
-    }
 
     function handleModalSubmit() {
         const metodaCriptare = document.getElementById("meniu").value;
@@ -75,10 +66,29 @@ document.addEventListener("DOMContentLoaded", function(){
                 if (substitutieInput.length === 26) {
                     input = document.getElementById("input").value;
                     output = criptareSubstitutie(input, substitutieInput.toUpperCase());
-                } else {
+                } 
+                else {
                     alert("Introduceți cifrul cheii de criptare (26 de litere)!");
                     return;
                 }
+                break;
+
+            case "vigenere":
+                const vigenereKey = document.getElementById("vigenereKeyInput").value;
+                if (vigenereKey !== ""){
+                    input = document.getElementById("input").value;
+                    output = criptareVigenere(input, vigenereKey);
+                }
+                else {
+                    alert("Introduceți cheia pentru Vigenere!");
+                    return;
+                }
+                break;
+
+            case "transpozitie":
+                const transpozitieInput = document.getElementById("transpozitieInput").value;
+                input = document.getElementById("input").value;
+                output = criptareTranspozitie(input, transpozitieInput);
                 break;
 
             default:

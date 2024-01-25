@@ -1,5 +1,3 @@
-// encrypt.js
-
 export function criptareCezar(mesaj, shift) {
     const alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let mesajCriptat = "";
@@ -31,7 +29,7 @@ export function criptareCezar(mesaj, shift) {
 
 export function criptareSubstitutie(mesaj, subKey) {
     const alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const mesajUpperCase = mesaj.toUpperCase(); // Declare mesajUpperCase using const
+    const mesajUpperCase = mesaj.toUpperCase();
     let mesajCriptat = "";
 
     for(let i = 0; i < mesaj.length; i++){
@@ -54,3 +52,57 @@ export function criptareSubstitutie(mesaj, subKey) {
     }
     return mesajCriptat;
 }
+
+export function criptareVigenere(mesaj, cheie) {
+    const alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let mesajCriptat = "";
+    let cheieUpperCase = cheie.toUpperCase();
+    let cheieIndex = 0;
+
+    for (let i = 0; i < mesaj.length; i++) {
+        let char = mesaj[i];
+        if (alfabet.includes(char.toUpperCase())) {
+            let charUpperCase = char.toUpperCase();
+            let index = alfabet.indexOf(charUpperCase);
+            let shift = alfabet.indexOf(cheieUpperCase[cheieIndex]);
+            cheieIndex = (cheieIndex + 1) % cheieUpperCase.length;
+
+            let newIndex = (index + shift) % 26;
+
+            if (char === charUpperCase) {
+                mesajCriptat += alfabet[newIndex];
+            } else {
+                mesajCriptat += alfabet[newIndex].toLowerCase();
+            }
+        } else {
+            mesajCriptat += char;
+        }
+    }
+
+    return mesajCriptat;
+}
+
+export function criptareTranspozitie(mesaj, cheie) {
+    let mesajCriptat = "";
+    let lungimeCheie = cheie.length;
+
+    let coloane = new Array(lungimeCheie);
+
+    for (let i = 0; i < lungimeCheie; i++) {
+        coloane[i] = "";
+    }
+
+    for (let i = 0; i < mesaj.length; i++) {
+        let char = mesaj[i];
+        coloane[i % lungimeCheie] += char;
+    }
+
+    let sortedCheie = Array.from(cheie).sort().join("");
+    for (let i = 0; i < lungimeCheie; i++) {
+        let index = sortedCheie.indexOf(cheie[i]);
+        mesajCriptat += coloane[index];
+    }
+
+    return mesajCriptat;
+}
+
